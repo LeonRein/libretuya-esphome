@@ -1,0 +1,11 @@
+version: "3"
+services:
+  esphome:
+    container_name: esphome-libretuya
+    image: "ghcr.io/leonrein/esphome-amd64:libretuya"
+    volumes:
+      - ./config:/config:rw 
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    privileged: false
+    network_mode: host

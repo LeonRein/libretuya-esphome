@@ -64,9 +64,9 @@ class DockerParams:
     @classmethod
     def for_type_arch(cls, build_type, arch):
         prefix = {
-            TYPE_DOCKER: "esphome/esphome",
-            TYPE_HA_ADDON: "esphome/esphome-hassio",
-            TYPE_LINT: "esphome/esphome-lint",
+            TYPE_DOCKER: "leonrein/esphome",
+            TYPE_HA_ADDON: "leonrein/esphome-hassio",
+            TYPE_LINT: "leonrein/esphome-lint",
         }[build_type]
         build_to = f"{prefix}-{arch}"
         baseimgtype = {
@@ -140,8 +140,8 @@ def main():
         }[channel]
         cache_img = f"ghcr.io/{params.build_to}:{cache_tag}"
 
-        imgs = [f"{params.build_to}:{tag}" for tag in tags_to_push]
-        imgs += [f"ghcr.io/{params.build_to}:{tag}" for tag in tags_to_push]
+        # imgs = [f"{params.build_to}:{tag}" for tag in tags_to_push]
+        imgs = [f"ghcr.io/{params.build_to}:{tag}" for tag in tags_to_push]
 
         # 3. build
         cmd = [
